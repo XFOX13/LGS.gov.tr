@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fox Login</title>
+  <title>Animated Fox Login</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -30,11 +30,11 @@
     }
 
     .eye {
-      transition: r 0.3s ease;
+      transition: ry 0.3s ease, cx 0.3s ease;
     }
 
     .paw {
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
       transform-origin: center;
     }
 
@@ -48,6 +48,16 @@
 
     .peek-right {
       transform: translate(10px, 10px);
+    }
+
+    .tail {
+      animation: wag 1s infinite alternate ease-in-out;
+      transform-origin: bottom right;
+    }
+
+    @keyframes wag {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(10deg); }
     }
 
     .login-box {
@@ -79,14 +89,23 @@
 
   <div class="fox-container">
     <svg viewBox="0 0 200 200" width="200" height="200">
-      <!-- Fox Head -->
-      <circle cx="100" cy="100" r="80" fill="#f97316" />
+      <!-- Head -->
+      <circle id="head" cx="100" cy="100" r="80" fill="#f97316" />
+      <!-- Ears -->
+      <polygon id="ear-left" points="40,40 60,20 70,50" fill="#f97316" />
+      <polygon id="ear-right" points="160,40 140,20 130,50" fill="#f97316" />
       <!-- Eyes (start closed) -->
       <ellipse id="eye-left" class="eye" cx="70" cy="90" rx="8" ry="2" fill="#000" />
       <ellipse id="eye-right" class="eye" cx="130" cy="90" rx="8" ry="2" fill="#000" />
+      <!-- Nose -->
+      <circle id="nose" cx="100" cy="110" r="4" fill="#000" />
+      <!-- Mouth -->
+      <path id="mouth" d="M90 120 Q100 130 110 120" stroke="#000" fill="none" />
       <!-- Paws -->
       <circle id="paw-left" class="paw" cx="70" cy="90" r="15" fill="#8b5c2c" />
       <circle id="paw-right" class="paw" cx="130" cy="90" r="15" fill="#8b5c2c" />
+      <!-- Tail -->
+      <path id="tail" class="tail" d="M180 150 Q190 160 180 170 Q170 160 180 150" fill="#f97316" />
     </svg>
   </div>
 
@@ -98,13 +117,13 @@
 
   <script>
     function foxOpenEyes() {
-      // Eyes open when typing name
       document.getElementById('eye-left').setAttribute('ry', '8');
       document.getElementById('eye-right').setAttribute('ry', '8');
+      document.getElementById('eye-left').setAttribute('cx', '65');
+      document.getElementById('eye-right').setAttribute('cx', '135');
     }
 
     function foxCoverEyes() {
-      // Paws move up to cover eyes
       document.getElementById('paw-left').classList.add('cover-left');
       document.getElementById('paw-right').classList.add('cover-right');
       document.getElementById('paw-right').classList.remove('peek-right');
@@ -116,7 +135,6 @@
       pwd.type = isHidden ? 'text' : 'password';
 
       if (!isHidden) {
-        // Show password → right paw peeks
         document.getElementById('paw-right').classList.remove('cover-right');
         document.getElementById('paw-right').classList.add('peek-right');
       } else {
