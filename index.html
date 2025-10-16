@@ -39,15 +39,15 @@
     }
 
     .cover-left {
-      transform: translate(-10px, -30px);
+      transform: translate(-5px, -30px);
     }
 
     .cover-right {
-      transform: translate(10px, -30px);
+      transform: translate(5px, -30px);
     }
 
     .peek-right {
-      transform: translate(10px, 10px);
+      transform: translate(5px, 10px);
     }
 
     .login-box {
@@ -84,16 +84,16 @@
       <!-- Ears -->
       <polygon id="ear-left" points="40,40 60,20 70,50" fill="#f97316" />
       <polygon id="ear-right" points="160,40 140,20 130,50" fill="#f97316" />
-      <!-- Eyes (open by default) -->
-      <circle id="eye-left" class="eye" cx="70" cy="90" r="8" fill="#000" />
-      <circle id="eye-right" class="eye" cx="130" cy="90" r="8" fill="#000" />
+      <!-- Eyes (open and centered) -->
+      <circle id="eye-left" class="eye" cx="85" cy="85" r="8" fill="#000" />
+      <circle id="eye-right" class="eye" cx="115" cy="85" r="8" fill="#000" />
       <!-- Nose -->
       <circle id="nose" cx="100" cy="110" r="4" fill="#000" />
       <!-- Mouth -->
       <path id="mouth" d="M90 120 Q100 130 110 120" stroke="#000" fill="none" />
-      <!-- Paws -->
-      <circle id="paw-left" class="paw" cx="70" cy="90" r="15" fill="#8b5c2c" />
-      <circle id="paw-right" class="paw" cx="130" cy="90" r="15" fill="#8b5c2c" />
+      <!-- Paws (correct position) -->
+      <circle id="paw-left" class="paw" cx="80" cy="115" r="15" fill="#8b5c2c" />
+      <circle id="paw-right" class="paw" cx="120" cy="115" r="15" fill="#8b5c2c" />
     </svg>
   </div>
 
@@ -106,8 +106,8 @@
   <script>
     function foxLook() {
       // Eyes shift inward when typing name
-      document.getElementById('eye-left').setAttribute('cx', '65');
-      document.getElementById('eye-right').setAttribute('cx', '135');
+      document.getElementById('eye-left').setAttribute('cx', '83');
+      document.getElementById('eye-right').setAttribute('cx', '117');
     }
 
     function foxCoverEyes() {
