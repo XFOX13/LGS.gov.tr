@@ -1,0 +1,44 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f0f4ff, #d0e0ff);
+  text-align: center;
+  padding: 50px;
+}
+
+#intro {
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eye {
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+.paw {
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.paw.wave {
+  transform: rotate(-20deg);
+}
+
+#countdown {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin: 10px;
+  cursor: pointer;
+}
