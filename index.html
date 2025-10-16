@@ -30,7 +30,7 @@
     }
 
     .eye {
-      transition: cx 0.3s ease;
+      transition: r 0.3s ease;
     }
 
     .paw {
@@ -81,9 +81,9 @@
     <svg viewBox="0 0 200 200" width="200" height="200">
       <!-- Fox Head -->
       <circle cx="100" cy="100" r="80" fill="#f97316" />
-      <!-- Eyes -->
-      <circle id="eye-left" class="eye" cx="70" cy="90" r="8" fill="#000" />
-      <circle id="eye-right" class="eye" cx="130" cy="90" r="8" fill="#000" />
+      <!-- Eyes (start closed) -->
+      <ellipse id="eye-left" class="eye" cx="70" cy="90" rx="8" ry="2" fill="#000" />
+      <ellipse id="eye-right" class="eye" cx="130" cy="90" rx="8" ry="2" fill="#000" />
       <!-- Paws -->
       <circle id="paw-left" class="paw" cx="70" cy="90" r="15" fill="#8b5c2c" />
       <circle id="paw-right" class="paw" cx="130" cy="90" r="15" fill="#8b5c2c" />
@@ -91,16 +91,16 @@
   </div>
 
   <div class="login-box">
-    <input type="text" id="username" placeholder="Your Name" oninput="foxLook()" />
+    <input type="text" id="username" placeholder="Your Name" oninput="foxOpenEyes()" />
     <input type="password" id="password" placeholder="Password" onfocus="foxCoverEyes()" />
     <button onclick="togglePassword()">Show Password</button>
   </div>
 
   <script>
-    function foxLook() {
-      // Eyes shift inward when typing name
-      document.getElementById('eye-left').setAttribute('cx', '65');
-      document.getElementById('eye-right').setAttribute('cx', '135');
+    function foxOpenEyes() {
+      // Eyes open when typing name
+      document.getElementById('eye-left').setAttribute('ry', '8');
+      document.getElementById('eye-right').setAttribute('ry', '8');
     }
 
     function foxCoverEyes() {
@@ -120,7 +120,6 @@
         document.getElementById('paw-right').classList.remove('cover-right');
         document.getElementById('paw-right').classList.add('peek-right');
       } else {
-        // Hide password → cover eyes again
         foxCoverEyes();
       }
     }
