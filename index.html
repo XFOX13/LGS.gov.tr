@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LGS 2026 Celebration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="intro">
+    <h1>Welcome to LGS 2026 🎉</h1>
+    <p>Click to begin your journey...</p>
+    <button onclick="startSite()">Start</button>
+  </div>
+
+  <div id="main-content" style="display:none;">
+    <div id="countdown"></div>
+    <audio id="bg-music" src="your-music.mp3" loop></audio>
+    <button onclick="toggleMusic()">🔊 Music</button>
+
+    <div class="fox-container" onclick="wavePaw()">
+      <!-- Fox SVG -->
+      <svg viewBox="0 0 200 200" class="fox">
+        <circle cx="100" cy="80" r="50" fill="#f97316" />
+        <circle class="eye left-eye" cx="85" cy="75" r="5" fill="#000" />
+        <circle class="eye right-eye" cx="115" cy="75" r="5" fill="#000" />
+        <circle class="paw" cx="140" cy="130" r="10" fill="#8b5c2c" />
+      </svg>
+    </div>
+
+    <div id="reveal" style="display:none;">
+      <h2>🎁 Surprise Unlocked!</h2>
+      <p>Here’s your special message or photo.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
