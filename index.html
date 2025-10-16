@@ -1,50 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .paw {
-      transition: transform 0.3s ease;
-      transform-origin: center;
-    }
-    .cover {
-      transform: translateY(-20px);
-    }
-    .peek {
-      transform: translateY(10px);
-    }
-  </style>
-</head>
-<body>
-  <svg viewBox="0 0 200 200" width="200" height="200">
-    <circle cx="100" cy="100" r="80" fill="#f97316" />
-    <circle cx="70" cy="90" r="8" fill="#000" />
-    <circle cx="130" cy="90" r="8" fill="#000" />
-    <circle id="paw-left" class="paw" cx="70" cy="90" r="15" fill="#8b5c2c" />
-    <circle id="paw-right" class="paw" cx="130" cy="90" r="15" fill="#8b5c2c" />
-  </svg>
+function foxCoverEyes() {
+  // Move paws UP to cover eyes
+  document.getElementById('paw-left').classList.add('cover-left');
+  document.getElementById('paw-right').classList.add('cover-right');
+  document.getElementById('paw-right').classList.remove('peek-right');
+}
 
-  <input type="password" id="password" onfocus="coverEyes()" />
-  <button onclick="togglePassword()">Show Password</button>
+function togglePassword() {
+  const pwd = document.getElementById('password');
+  const isHidden = pwd.type === 'password';
+  pwd.type = isHidden ? 'text' : 'password';
 
-  <script>
-    function coverEyes() {
-      document.getElementById('paw-left').classList.add('cover');
-      document.getElementById('paw-right').classList.add('cover');
-    }
-
-    function togglePassword() {
-      const pwd = document.getElementById('password');
-      const isHidden = pwd.type === 'password';
-      pwd.type = isHidden ? 'text' : 'password';
-
-      if (!isHidden) {
-        document.getElementById('paw-left').classList.remove('cover');
-        document.getElementById('paw-right').classList.remove('cover');
-        document.getElementById('paw-right').classList.add('peek');
-      } else {
-        coverEyes();
-      }
-    }
-  </script>
-</body>
-</html>
+  if (!isHidden) {
+    // Show password → right paw moves DOWN to peek
+    document.getElementById('paw-right').classList.remove('cover-right');
+    document.getElementById('paw-right').classList.add('peek-right');
+  } else {
+    // Hide password → cover both eyes again
+    foxCoverEyes();
+  }
+}
