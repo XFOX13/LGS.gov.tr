@@ -84,14 +84,14 @@
       <!-- Ears -->
       <polygon id="ear-left" points="50,50 65,30 75,60" fill="#f97316" />
       <polygon id="ear-right" points="150,50 135,30 125,60" fill="#f97316" />
-      <!-- Eyes (adjusted) -->
+      <!-- Eyes (open and centered) -->
       <circle id="eye-left" class="eye" cx="90" cy="90" r="6" fill="#000" />
       <circle id="eye-right" class="eye" cx="110" cy="90" r="6" fill="#000" />
       <!-- Nose -->
       <circle id="nose" cx="100" cy="105" r="3" fill="#000" />
       <!-- Mouth -->
       <path id="mouth" d="M92 115 Q100 122 108 115" stroke="#000" fill="none" />
-      <!-- Paws (adjusted) -->
+      <!-- Paws (correct position) -->
       <circle id="paw-left" class="paw" cx="88" cy="125" r="12" fill="#8b5c2c" />
       <circle id="paw-right" class="paw" cx="112" cy="125" r="12" fill="#8b5c2c" />
     </svg>
@@ -108,6 +108,11 @@
       // Eyes shift inward when typing name
       document.getElementById('eye-left').setAttribute('cx', '88');
       document.getElementById('eye-right').setAttribute('cx', '112');
+
+      // Lower paws if they were up
+      document.getElementById('paw-left').classList.remove('cover-left');
+      document.getElementById('paw-right').classList.remove('cover-right');
+      document.getElementById('paw-right').classList.remove('peek-right');
     }
 
     function foxCoverEyes() {
