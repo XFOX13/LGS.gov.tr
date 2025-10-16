@@ -79,21 +79,21 @@
 
   <div class="fox-container">
     <svg viewBox="0 0 200 200" width="200" height="200">
-      <!-- Head -->
-      <circle id="head" cx="100" cy="100" r="80" fill="#f97316" />
+      <!-- Head (smaller) -->
+      <circle id="head" cx="100" cy="100" r="60" fill="#f97316" />
       <!-- Ears -->
-      <polygon id="ear-left" points="40,40 60,20 70,50" fill="#f97316" />
-      <polygon id="ear-right" points="160,40 140,20 130,50" fill="#f97316" />
-      <!-- Eyes (open and centered) -->
-      <circle id="eye-left" class="eye" cx="85" cy="85" r="8" fill="#000" />
-      <circle id="eye-right" class="eye" cx="115" cy="85" r="8" fill="#000" />
+      <polygon id="ear-left" points="50,50 65,30 75,60" fill="#f97316" />
+      <polygon id="ear-right" points="150,50 135,30 125,60" fill="#f97316" />
+      <!-- Eyes (adjusted) -->
+      <circle id="eye-left" class="eye" cx="90" cy="90" r="6" fill="#000" />
+      <circle id="eye-right" class="eye" cx="110" cy="90" r="6" fill="#000" />
       <!-- Nose -->
-      <circle id="nose" cx="100" cy="110" r="4" fill="#000" />
+      <circle id="nose" cx="100" cy="105" r="3" fill="#000" />
       <!-- Mouth -->
-      <path id="mouth" d="M90 120 Q100 130 110 120" stroke="#000" fill="none" />
-      <!-- Paws (correct position) -->
-      <circle id="paw-left" class="paw" cx="80" cy="115" r="15" fill="#8b5c2c" />
-      <circle id="paw-right" class="paw" cx="120" cy="115" r="15" fill="#8b5c2c" />
+      <path id="mouth" d="M92 115 Q100 122 108 115" stroke="#000" fill="none" />
+      <!-- Paws (adjusted) -->
+      <circle id="paw-left" class="paw" cx="88" cy="125" r="12" fill="#8b5c2c" />
+      <circle id="paw-right" class="paw" cx="112" cy="125" r="12" fill="#8b5c2c" />
     </svg>
   </div>
 
@@ -106,8 +106,8 @@
   <script>
     function foxLook() {
       // Eyes shift inward when typing name
-      document.getElementById('eye-left').setAttribute('cx', '83');
-      document.getElementById('eye-right').setAttribute('cx', '117');
+      document.getElementById('eye-left').setAttribute('cx', '88');
+      document.getElementById('eye-right').setAttribute('cx', '112');
     }
 
     function foxCoverEyes() {
