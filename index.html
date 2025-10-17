@@ -3,139 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fox Login Animation</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f0f4ff, #d0e0ff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .fox-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin-bottom: 30px;
-    }
-
-    svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .eye {
-      transition: cx 0.3s ease;
-    }
-
-    .paw {
-      transition: transform 0.4s ease;
-      transform-origin: center;
-    }
-
-    .cover-left {
-      transform: translate(-5px, -30px);
-    }
-
-    .cover-right {
-      transform: translate(5px, -30px);
-    }
-
-    .peek-right {
-      transform: translate(5px, 10px);
-    }
-
-    .login-box {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 250px;
-    }
-
-    input {
-      padding: 10px;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    button {
-      padding: 10px;
-      font-size: 1em;
-      border: none;
-      background-color: #f97316;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Fox Mascot</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="fox-container">
-    <svg viewBox="0 0 200 200" width="200" height="200">
-      <!-- Head (smaller) -->
-      <circle id="head" cx="100" cy="100" r="60" fill="#f97316" />
-      <!-- Ears -->
-      <polygon id="ear-left" points="50,50 65,30 75,60" fill="#f97316" />
-      <polygon id="ear-right" points="150,50 135,30 125,60" fill="#f97316" />
-      <!-- Eyes (open and centered) -->
-      <circle id="eye-left" class="eye" cx="90" cy="90" r="6" fill="#000" />
-      <circle id="eye-right" class="eye" cx="110" cy="90" r="6" fill="#000" />
-      <!-- Nose -->
-      <circle id="nose" cx="100" cy="105" r="3" fill="#000" />
-      <!-- Mouth -->
-      <path id="mouth" d="M92 115 Q100 122 108 115" stroke="#000" fill="none" />
-      <!-- Paws (correct position) -->
-      <circle id="paw-left" class="paw" cx="88" cy="125" r="12" fill="#8b5c2c" />
-      <circle id="paw-right" class="paw" cx="112" cy="125" r="12" fill="#8b5c2c" />
-    </svg>
+    <img src="assets/fox-tail.png" id="tail" />
+    <img src="assets/fox-body.png" id="body" />
+    <img src="assets/fox-head.png" id="head" />
+    <img src="assets/paw-left.png" id="paw-left" />
+    <img src="assets/paw-right.png" id="paw-right" />
   </div>
 
-  <div class="login-box">
-    <input type="text" id="username" placeholder="Your Name" oninput="foxLook()" />
-    <input type="password" id="password" placeholder="Password" onfocus="foxCoverEyes()" />
-    <button onclick="togglePassword()">Show Password</button>
-  </div>
-
-  <script>
-    function foxLook() {
-      // Eyes shift inward when typing name
-      document.getElementById('eye-left').setAttribute('cx', '88');
-      document.getElementById('eye-right').setAttribute('cx', '112');
-
-      // Lower paws if they were up
-      document.getElementById('paw-left').classList.remove('cover-left');
-      document.getElementById('paw-right').classList.remove('cover-right');
-      document.getElementById('paw-right').classList.remove('peek-right');
-    }
-
-    function foxCoverEyes() {
-      // Paws move up to cover eyes
-      document.getElementById('paw-left').classList.add('cover-left');
-      document.getElementById('paw-right').classList.add('cover-right');
-      document.getElementById('paw-right').classList.remove('peek-right');
-    }
-
-    function togglePassword() {
-      const pwd = document.getElementById('password');
-      const isHidden = pwd.type === 'password';
-      pwd.type = isHidden ? 'text' : 'password';
-
-      if (!isHidden) {
-        // Show password → right paw peeks
-        document.getElementById('paw-right').classList.remove('cover-right');
-        document.getElementById('paw-right').classList.add('peek-right');
-      } else {
-        foxCoverEyes();
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
