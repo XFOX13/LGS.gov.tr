@@ -13,7 +13,7 @@
       font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
     }
     body {
-      min-height: 100vh;
+      min-height: 200vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -23,7 +23,7 @@
       background: #fff4eb;
       border-radius: 24px;
       box-shadow: 0 8px 32px rgba(250, 117, 47, 0.15);
-      padding: 24px 8px 16px 8px;
+      padding: 24px 8px 20px 8px;
       width: 120vw;
       max-width: 380px;
       display: flex;
@@ -45,7 +45,7 @@
       left: 50%;
       top: 140px;
       transform: translateX(-50%);
-      width: 130px;  /* BIGGER BODY */
+      width: 200px;  /* BIGGER BODY */
       z-index: 2;
       pointer-events: none;
       user-select: none;
@@ -57,7 +57,7 @@
     .fox-tail {
       position: absolute;
       left: 50%;
-      top: 275px; /* Puts tail below body for "connected" look */
+      top: 175px; /* Puts tail below body for "connected" look */
       transform: translateX(-8%) rotate(26deg);
       width: 85px; /* BIGGER TAIL */
       z-index: 1; /* TAIL BEHIND BODY */
@@ -106,8 +106,8 @@
       justify-content: center;
       overflow: visible;
     }
-    .fox-eye.left  { left: 30px; }  /* More space between */
-    .fox-eye.right { right: 30px; }
+    .fox-eye.left  { left: 20px; }  /* More space between */
+    .fox-eye.right { right: 20px; }
     .fox-eye .fox-eye-shine {
       width: 4px; height: 4px;
       background: #fff;
@@ -130,8 +130,8 @@
       pointer-events: none;
       user-select: none;
     }
-    .fox-paw.left  { left: 30px;  transform: rotate(-10deg) translateY(0);}
-    .fox-paw.right { right: 30px; transform: rotate(10deg) translateY(0);}
+    .fox-paw.left  { left: 20px;  transform: rotate(-10deg) translateY(0);}
+    .fox-paw.right { right: 20px; transform: rotate(10deg) translateY(0);}
     .fox-paw.cover {
       opacity: 1;
       transform: translateY(-18px) scale(1.13) rotate(-36deg);
