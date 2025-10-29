@@ -1,20 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fox Mascot</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Cute Fox Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-container {
+      background: #fff4eb;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(250, 117, 47, 0.15);
+      padding: 40px 36px 28px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 340px;
+    }
+    .fox-face-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fox-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      background: #fda085;
+      box-shadow: 0 4px 20px #fa752f22;
+    }
+    .fox-face-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Tail */
+    .fox-tail {
+      position: absolute;
+      right: -60px;
+      bottom: 15px;
+      width: 70px;
+      z-index: 0;
+      transform-origin: top left;
+      animation: tail-shake 1.3s infinite cubic-bezier(.44,-0.11,.77,1.06);
+      filter: drop-shadow(2px 4px 10px #fa752f33);
+    }
+    @keyframes tail-shake {
+      0% { transform: rotate(-20deg) }
+      20% { transform: rotate(10deg) }
+      35% { transform: rotate(-12deg) }
+      50% { transform: rotate(15deg) }
+      65% { transform: rotate(-7deg) }
+      80% { transform: rotate(8deg) }
+      100% { transform: rotate(-20deg) }
+    }
+    /* Eyes */
+    .fox-eyes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .fox-eye {
+      position: absolute;
+      width: 30px; height: 30px;
+      background: #2c210f;
+      border-radius: 50%;
+      border: 3px solid #160d05;
+      top: 72px;
+      transition: transform 0.25s cubic-bezier(.51,-0.01,.28,1.01);
+      box-shadow: 0 2px 0 #fff6ee inset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    .fox-eye.left  { left: 38px; }
+    .fox-eye.right { right: 38px; }
+    .fox-eye .fox-eye-shine {
+      width: 8px; height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      left: 7px; top: 7px;
+      opacity: 0.9;
+    }
+    /* Cheeks */
+    .fox-cheek {
+      position: absolute;
+      width: 26px; height: 26px;
+      background: #ffb7b7;
+      border-radius: 50%;
+      top: 112px;
+      z-index: 4;
+      opacity: 0.82;
+    }
+    .fox-cheek.left  { left: 23px; }
+    .fox-cheek.right { right: 23px; }
+    /* Paws */
+    .fox-paw {
+      position: absolute;
+      width: 50px; height: 35px;
+      background: #fa752f;
+      border-radius: 40% 60% 60% 40%/60% 60% 60% 60%;
+      border: 3px solid #c85a1a;
+      z-index: 10;
+      transition: transform 0.32s cubic-bezier(.51,-0.01,.28,1.01), opacity 0.22s;
+      opacity: 0;
+      top: 60px;
+      box-shadow: 0 2px 10px #fa752f22;
+    }
+    .fox-paw.left  { left: 8px;  transform: rotate(-10deg) translateY(0);}
+    .fox-paw.right { right: 8px; transform: rotate(10deg) translateY(0);}
+    /* Paws covering */
+    .fox-paw.cover {
+      opacity: 1;
+      transform: translateY(-38px) scale(1.05) rotate(-32deg);
+    }
+    .fox-paw.cover.right {
+      transform: translateY(-38px) scale(1.05) rotate(32deg);
+    }
+    /* Paws peeking */
+    .fox-paw.peek {
+      opacity: 1;
+      transform: translateY(-18px) scale(1.04) rotate(-20deg);
+    }
+    .fox-paw.peek.right {
+      opacity: 1;
+      transform: translateY(-38px) scale(1.05) rotate(32deg);
+    }
+    /* Paw details (claws) */
+    .fox-claw {
+      position: absolute;
+      width: 8px; height: 8px;
+      background: #fff6ee;
+      border-radius: 50%;
+      bottom: 3px;
+      left: 7px;
+      box-shadow: 12px 0 #fff6ee, 24px 0 #fff6ee;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+      .login-container { min-width: unset; width: 96vw; padding: 16px; }
+      .fox-face-wrapper { width: 110px; height: 110px;}
+      .fox-circle { width: 90px; height: 90px;}
+      .fox-tail { width: 36px; right: -26px; bottom: 4px;}
+    }
+    /* Form styles same as before */
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+    .input-group {
+      position: relative;
+      width: 100%;
+    }
+    label {
+      font-size: 0.95em;
+      color: #fa752f;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+      letter-spacing: 0.02em;
+    }
+    input[type="email"], input[type="password"], input[type="text"] {
+      width: 100%;
+      padding: 12px 40px 12px 14px;
+      border-radius: 8px;
+      border: 2px solid #fa752f44;
+      font-size: 1em;
+      transition: border 0.2s;
+      outline: none;
+      background: #fff;
+      color: #333;
+      font-family: inherit;
+      margin-top: 2px;
+    }
+    input:focus {
+      border: 2px solid #fa752f;
+    }
+    .show-password-btn {
+      position: absolute;
+      right: 10px;
+      top: 52%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #fa752f;
+      font-size: 1.15em;
+      cursor: pointer;
+      padding: 0 2px;
+      user-select: none;
+    }
+    .login-btn {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #fa752f 40%, #ffb347 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
+      box-shadow: 0 2px 8px #fa752f22;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .login-btn:hover, .login-btn:focus {
+      background: linear-gradient(90deg, #ffb347 0%, #fa752f 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+  </style>
 </head>
 <body>
-  <div class="fox-container">
-    <img src="assets/fox-tail.png" id="tail" />
-    <img src="assets/fox-body.png" id="body" />
-    <img src="assets/fox-head.png" id="head" />
-    <img src="assets/paw-left.png" id="paw-left" />
-    <img src="assets/paw-right.png" id="paw-right" />
+  <div class="login-container">
+    <div class="fox-face-wrapper" id="foxFace">
+      <span class="fox-tail">
+        <img src="fox-tail.png" alt="Fox Tail" style="width:100%;display:block;">
+      </span>
+      <span class="fox-circle">
+        <img src="fox-head.png" alt="Fox Face" class="fox-face-img">
+        <!-- Eyes and cheeks, over the image -->
+        <span class="fox-eyes">
+          <span class="fox-eye left"><span class="fox-eye-shine"></span></span>
+          <span class="fox-eye right"><span class="fox-eye-shine"></span></span>
+        </span>
+        <span class="fox-cheek left"></span>
+        <span class="fox-cheek right"></span>
+        <!-- Paws -->
+        <span class="fox-paw left"><span class="fox-claw"></span></span>
+        <span class="fox-paw right"><span class="fox-claw"></span></span>
+      </span>
+    </div>
+    <form class="login-form" autocomplete="off" onsubmit="event.preventDefault(); alert('Logged in! (demo)');">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        <button class="show-password-btn" id="showPwdBtn" type="button" aria-label="Show password">&#128065;</button>
+      </div>
+      <button class="login-btn" type="submit">Log In</button>
+    </form>
   </div>
+  <script>
+    // Elements
+    const emailInput = document.getElementById('email');
+    const pwdInput = document.getElementById('password');
+    const showBtn = document.getElementById('showPwdBtn');
+    const foxFace = document.getElementById('foxFace');
 
-  <script src="script.js"></script>
+    const eyeL = foxFace.querySelector('.fox-eye.left');
+    const eyeR = foxFace.querySelector('.fox-eye.right');
+    const pawL = foxFace.querySelector('.fox-paw.left');
+    const pawR = foxFace.querySelector('.fox-paw.right');
+
+    let isPwdFocused = false;
+    let isShowingPwd = false;
+
+    // Move eyes as you type in email
+    emailInput.addEventListener('input', () => {
+      moveEyes(emailInput.value.length);
+    });
+    emailInput.addEventListener('focus', () => {
+      moveEyes(emailInput.value.length);
+    });
+    emailInput.addEventListener('blur', () => {
+      resetEyes();
+    });
+
+    function moveEyes(len) {
+      // Offset: up to 10px left/right, 4px up, based on length
+      const offset = Math.min(len / 18, 1); // 0 to 1
+      const x = 8 * (offset - 0.5); // -4 to 4
+      const y = -4 * offset; // 0 to -4
+      eyeL.style.transform = `translate(${x}px, ${y}px)`;
+      eyeR.style.transform = `translate(${x}px, ${y}px)`;
+    }
+    function resetEyes() {
+      eyeL.style.transform = `translate(0, 0)`;
+      eyeR.style.transform = `translate(0, 0)`;
+    }
+
+    // Paws logic
+    pwdInput.addEventListener('focus', () => {
+      isPwdFocused = true;
+      updateFoxPaws();
+    });
+    pwdInput.addEventListener('blur', () => {
+      isPwdFocused = false;
+      updateFoxPaws();
+    });
+    showBtn.addEventListener('click', () => {
+      isShowingPwd = !isShowingPwd;
+      pwdInput.type = isShowingPwd ? 'text' : 'password';
+      showBtn.innerHTML = isShowingPwd ? '&#128064;' : '&#128065;';
+      updateFoxPaws();
+      pwdInput.focus();
+    });
+
+    function updateFoxPaws() {
+      pawL.classList.remove('cover', 'peek');
+      pawR.classList.remove('cover', 'peek', 'right');
+      if (isPwdFocused && !isShowingPwd) {
+        // Both paws cover
+        pawL.classList.add('cover');
+        pawR.classList.add('cover', 'right');
+      } else if (isPwdFocused && isShowingPwd) {
+        // Peeking (left paw down, right paw up)
+        pawL.classList.add('peek');
+        pawR.classList.add('cover', 'right');
+      }
+    }
+    updateFoxPaws();
+  </script>
 </body>
 </html>
