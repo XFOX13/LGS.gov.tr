@@ -24,8 +24,8 @@
       border-radius: 24px;
       box-shadow: 0 8px 32px rgba(250, 117, 47, 0.15);
       padding: 24px 8px 20px 8px;
-      width: 180vw;
-      max-width: 380px;
+      width: 150vw;
+      max-width: 300px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -43,7 +43,7 @@
     .fox-body {
       position: absolute;
       left: 50%;
-      top: 140px;
+      top: 180px;
       transform: translateX(-50%);
       width: 200px;  /* BIGGER BODY */
       z-index: 2;
@@ -56,7 +56,7 @@
     }
     .fox-tail {
       position: absolute;
-      left: 27%;
+      right: 75%;
       top: 175px; /* Puts tail below body for "connected" look */
       transform: translateX(-8%) rotate(26deg);
       width: 125px; /* BIGGER TAIL */
@@ -106,8 +106,8 @@
       justify-content: center;
       overflow: visible;
     }
-    .fox-eye.left  { left: 20px; }  /* More space between */
-    .fox-eye.right { right: 20px; }
+    .fox-eye.left  { left: 10px; }  /* More space between */
+    .fox-eye.right { right: 10px; }
     .fox-eye .fox-eye-shine {
       width: 4px; height: 4px;
       background: #fff;
@@ -130,8 +130,8 @@
       pointer-events: none;
       user-select: none;
     }
-    .fox-paw.left  { left: 20px;  transform: rotate(-10deg) translateY(0);}
-    .fox-paw.right { right: 20px; transform: rotate(10deg) translateY(0);}
+    .fox-paw.left  { left: 10px;  transform: rotate(-10deg) translateY(0);}
+    .fox-paw.right { right: 10px; transform: rotate(10deg) translateY(0);}
     .fox-paw.cover {
       opacity: 1;
       transform: translateY(-18px) scale(1.13) rotate(-36deg);
@@ -141,7 +141,7 @@
     }
     .fox-paw.peek {
       opacity: 1;
-      transform: translateY(-4px) scale(1.04) rotate(-15deg);
+      transform: translateY(+1px) scale(1.04) rotate(-15deg);
     }
     .fox-paw.peek.right {
       opacity: 1;
