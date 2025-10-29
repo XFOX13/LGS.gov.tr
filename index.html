@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cute Fox Login with Animated Eyes and Paws</title>
+  <title>Cute Fox Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -32,8 +32,8 @@
     }
     .fox-face-wrapper {
       position: relative;
-      width: 240px;
-      height: 340px;
+      width: 230px;
+      height: 320px;
       margin-bottom: 25px;
       display: flex;
       align-items: flex-start;
@@ -42,9 +42,9 @@
     }
     .fox-tail {
       position: absolute;
-      right: -45px;
-      bottom: 80px;
-      width: 70px;
+      right: -38px;
+      bottom: 65px;
+      width: 65px;
       z-index: 1;
       transform-origin: top left;
       animation: tail-shake 1.3s infinite cubic-bezier(.44,-0.11,.77,1.06);
@@ -62,9 +62,9 @@
     .fox-body {
       position: absolute;
       left: 50%;
-      top: 170px;
+      top: 157px;
       transform: translateX(-50%);
-      width: 120px;
+      width: 90px;
       z-index: 0;
       pointer-events: none;
       user-select: none;
@@ -74,8 +74,8 @@
       display: block;
     }
     .fox-head-img {
-      width: 220px;
-      height: 220px;
+      width: 210px;
+      height: 210px;
       display: block;
       position: relative;
       z-index: 2;
@@ -83,11 +83,11 @@
       pointer-events: none;
       user-select: none;
     }
-    /* Eyes (animated, positioned to fit head image) */
+    /* Eyes overlay, match the size of the head image */
     .fox-eyes {
       position: absolute;
-      width: 220px;
-      height: 220px;
+      width: 210px;
+      height: 210px;
       top: 0;
       left: 0;
       pointer-events: none;
@@ -95,11 +95,11 @@
     }
     .fox-eye {
       position: absolute;
-      width: 38px; height: 38px;
+      width: 34px; height: 34px;
       background: #2c210f;
       border-radius: 50%;
       border: 4px solid #160d05;
-      top: 94px;       /* <<--- FINE-TUNE FOR YOUR fox-head.png! */
+      top: 93px;       /* <<-- FINE-TUNE HERE */
       transition: transform 0.25s cubic-bezier(.51,-0.01,.28,1.01);
       box-shadow: 0 2px 0 #fff6ee inset;
       display: flex;
@@ -107,76 +107,71 @@
       justify-content: center;
       overflow: visible;
     }
-    .fox-eye.left  { left: 52px; }   /* <<--- FINE-TUNE FOR YOUR fox-head.png! */
-    .fox-eye.right { right: 52px; }  /* <<--- FINE-TUNE FOR YOUR fox-head.png! */
+    .fox-eye.left  { left: 47px; }   /* <<-- FINE-TUNE HERE */
+    .fox-eye.right { right: 46px; }  /* <<-- FINE-TUNE HERE */
     .fox-eye .fox-eye-shine {
-      width: 10px; height: 10px;
+      width: 8px; height: 8px;
       background: #fff;
       border-radius: 50%;
       position: absolute;
-      left: 9px; top: 9px;
+      left: 8px; top: 8px;
       opacity: 0.9;
     }
-    /* Paws (animated) */
     .fox-paw {
       position: absolute;
-      width: 46px; height: 34px;
+      width: 38px; height: 26px;
       background: #fa752f;
       border-radius: 40% 60% 60% 40%/60% 60% 60% 60%;
       border: 3px solid #c85a1a;
       z-index: 10;
       transition: transform 0.32s cubic-bezier(.51,-0.01,.28,1.01), opacity 0.22s;
       opacity: 0;
-      top: 120px;
+      top: 108px;
       box-shadow: 0 2px 10px #fa752f22;
       pointer-events: none;
       user-select: none;
     }
-    .fox-paw.left  { left: 18px;  transform: rotate(-10deg) translateY(0);}
-    .fox-paw.right { right: 18px; transform: rotate(10deg) translateY(0);}
-    /* Paws covering */
+    .fox-paw.left  { left: 16px;  transform: rotate(-10deg) translateY(0);}
+    .fox-paw.right { right: 15px; transform: rotate(10deg) translateY(0);}
     .fox-paw.cover {
       opacity: 1;
-      transform: translateY(-42px) scale(1.08) rotate(-32deg);
+      transform: translateY(-28px) scale(1.08) rotate(-32deg);
     }
     .fox-paw.cover.right {
-      transform: translateY(-42px) scale(1.08) rotate(32deg);
+      transform: translateY(-28px) scale(1.08) rotate(32deg);
     }
-    /* Paws peeking */
     .fox-paw.peek {
       opacity: 1;
-      transform: translateY(-18px) scale(1.04) rotate(-20deg);
+      transform: translateY(-10px) scale(1.04) rotate(-20deg);
     }
     .fox-paw.peek.right {
       opacity: 1;
-      transform: translateY(-42px) scale(1.08) rotate(32deg);
+      transform: translateY(-28px) scale(1.08) rotate(32deg);
     }
-    /* Paw details (claws) */
     .fox-claw {
       position: absolute;
-      width: 8px; height: 8px;
+      width: 6px; height: 6px;
       background: #fff6ee;
       border-radius: 50%;
-      bottom: 3px;
-      left: 7px;
-      box-shadow: 12px 0 #fff6ee, 24px 0 #fff6ee;
+      bottom: 2px;
+      left: 6px;
+      box-shadow: 10px 0 #fff6ee, 18px 0 #fff6ee;
       opacity: 0.7;
     }
-    /* Responsive */
     @media (max-width: 400px) {
-      .login-container { min-width: unset; width: 96vw; padding: 16px; }
-      .fox-face-wrapper { width: 120px; height: 180px;}
-      .fox-tail { width: 36px; right: -18px; bottom: 12px;}
-      .fox-body { width: 60px; top: 90px;}
-      .fox-head-img { width: 110px; height: 110px; }
-      .fox-eyes { width: 110px; height: 110px; }
-      .fox-eye { width: 17px; height: 17px; top: 47px; }
-      .fox-eye.left { left: 25px; }
-      .fox-eye.right { right: 25px; }
-      .fox-eye .fox-eye-shine { width: 4px; height: 4px; left: 4px; top: 4px; }
-      .fox-paw { width: 20px; height: 12px; top: 54px;}
-      .fox-paw.left { left: 6px;}
-      .fox-paw.right { right: 6px;}
+      .login-container { min-width: unset; width: 96vw; padding: 12px; }
+      .fox-face-wrapper { width: 110px; height: 160px;}
+      .fox-tail { width: 32px; right: -10px; bottom: 9px;}
+      .fox-body { width: 40px; top: 50px;}
+      .fox-head-img { width: 100px; height: 100px; }
+      .fox-eyes { width: 100px; height: 100px; }
+      .fox-eye { width: 15px; height: 15px; top: 43px; }
+      .fox-eye.left { left: 23px; }
+      .fox-eye.right { right: 22px; }
+      .fox-eye .fox-eye-shine { width: 3px; height: 3px; left: 3px; top: 3px; }
+      .fox-paw { width: 11px; height: 8px; top: 47px;}
+      .fox-paw.left { left: 4px;}
+      .fox-paw.right { right: 4px;}
     }
     .login-form {
       display: flex;
@@ -303,10 +298,10 @@
     });
 
     function moveEyes(len) {
-      // Offset: up to 10px left/right, 4px up, based on length
+      // Offset: up to 7px left/right, 3px up, based on length
       const offset = Math.min(len / 18, 1); // 0 to 1
-      const x = 8 * (offset - 0.5); // -4 to 4
-      const y = -4 * offset; // 0 to -4
+      const x = 7 * (offset - 0.5); // -3.5 to 3.5
+      const y = -3 * offset; // 0 to -3
       eyeL.style.transform = `translate(${x}px, ${y}px)`;
       eyeR.style.transform = `translate(${x}px, ${y}px)`;
     }
