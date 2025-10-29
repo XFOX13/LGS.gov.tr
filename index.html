@@ -34,7 +34,7 @@
       position: relative;
       width: 230px;
       height: 320px;
-      margin-bottom: 25px;
+      margin-top: 25px;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -42,12 +42,12 @@
     }
     .fox-tail {
       position: absolute;
-      right: -38px;
+      right: 38px;
       bottom: 65px;
       width: 65px;
       z-index: 1;
       transform-origin: top left;
-      animation: tail-shake 1.3s infinite cubic-bezier(.44,-0.11,.77,1.06);
+      animation: tail-shake 1.3s infinite cubic-bezier(.49,1.11,77,1.06);
       filter: drop-shadow(2px 4px 10px #fa752f33);
     }
     @keyframes tail-shake {
@@ -62,7 +62,7 @@
     .fox-body {
       position: absolute;
       left: 50%;
-      top: 157px;
+      top: 57px;
       transform: translateX(-50%);
       width: 90px;
       z-index: 0;
