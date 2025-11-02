@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cute Fox Login (Perfect Layout)</title>
+  <title>Cute Fox Login (Mobile Optimized)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
     html, body {
@@ -32,21 +32,41 @@
     }
     .fox-face-wrapper {
       position: relative;
-      width: 190px;
-      height: 305px;
+      width: 170px;
+      height: 270px;
       margin-bottom: 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
     }
+    .fox-tail {
+      position: absolute;
+      left: 57%;
+      bottom: 46px;
+      width: 70px; /* BIGGER TAIL */
+      z-index: 1;
+      transform: rotate(18deg);
+      transform-origin: top left;
+      animation: tail-shake 1.3s infinite cubic-bezier(.44,-0.11,.77,1.06);
+      filter: drop-shadow(2px 4px 10px #fa752f33);
+    }
+    @keyframes tail-shake {
+      0% { transform: rotate(10deg) }
+      20% { transform: rotate(34deg) }
+      35% { transform: rotate(14deg) }
+      50% { transform: rotate(38deg) }
+      65% { transform: rotate(10deg) }
+      80% { transform: rotate(28deg) }
+      100% { transform: rotate(10deg) }
+    }
     .fox-body {
       position: absolute;
       left: 50%;
-      top: 140px;
+      top: 128px;
       transform: translateX(-50%);
-      width: 130px;  /* BIGGER BODY */
-      z-index: 2;
+      width: 112px;  /* MUCH BIGGER BODY */
+      z-index: 0;
       pointer-events: none;
       user-select: none;
     }
@@ -54,51 +74,33 @@
       width: 100%;
       display: block;
     }
-    .fox-tail {
-      position: absolute;
-      left: 50%;
-      top: 225px; /* Puts tail below body for "connected" look */
-      transform: translateX(-8%) rotate(26deg);
-      width: 85px; /* BIGGER TAIL */
-      z-index: 1; /* TAIL BEHIND BODY */
-      animation: tail-shake 1.3s infinite cubic-bezier(.44,-0.11,.77,1.06);
-      filter: drop-shadow(2px 4px 10px #fa752f44);
-    }
-    @keyframes tail-shake {
-      0% { transform: translateX(-8%) rotate(16deg);}
-      20% { transform: translateX(-8%) rotate(34deg);}
-      35% { transform: translateX(-8%) rotate(14deg);}
-      50% { transform: translateX(-8%) rotate(38deg);}
-      65% { transform: translateX(-8%) rotate(10deg);}
-      80% { transform: translateX(-8%) rotate(28deg);}
-      100% { transform: translateX(-8%) rotate(16deg);}
-    }
     .fox-head-img {
-      width: 170px;
-      height: 170px;
+      width: 150px;
+      height: 150px;
       display: block;
       position: relative;
-      z-index: 3;
+      z-index: 2;
       margin: 0 auto;
       pointer-events: none;
       user-select: none;
     }
+    /* Eyes overlay, match the size of the head image */
     .fox-eyes {
       position: absolute;
-      width: 170px;
-      height: 170px;
+      width: 150px;
+      height: 150px;
       top: 0;
       left: 0;
       pointer-events: none;
-      z-index: 4;
+      z-index: 3;
     }
     .fox-eye {
       position: absolute;
-      width: 20px; height: 20px; /* Smaller eyes */
+      width: 19px; height: 19px; /* SMALLER EYES */
       background: #2c210f;
       border-radius: 50%;
       border: 3px solid #160d05;
-      top: 82px;
+      top: 66px;
       transition: transform 0.25s cubic-bezier(.51,-0.01,.28,1.01);
       box-shadow: 0 2px 0 #fff6ee inset;
       display: flex;
@@ -106,8 +108,8 @@
       justify-content: center;
       overflow: visible;
     }
-    .fox-eye.left  { left: 39px; }  /* More space between */
-    .fox-eye.right { right: 39px; }
+    .fox-eye.left  { left: 37px; }
+    .fox-eye.right { right: 38px; }
     .fox-eye .fox-eye-shine {
       width: 4px; height: 4px;
       background: #fff;
@@ -118,34 +120,34 @@
     }
     .fox-paw {
       position: absolute;
-      width: 26px; height: 16px;
+      width: 23px; height: 13px;
       background: #fa752f;
       border-radius: 40% 60% 60% 40%/60% 60% 60% 60%;
       border: 2px solid #c85a1a;
       z-index: 10;
       transition: transform 0.32s cubic-bezier(.51,-0.01,.28,1.01), opacity 0.22s;
       opacity: 0;
-      top: 94px;
+      top: 81px;
       box-shadow: 0 2px 10px #fa752f22;
       pointer-events: none;
       user-select: none;
     }
-    .fox-paw.left  { left: 30px;  transform: rotate(-10deg) translateY(0);}
-    .fox-paw.right { right: 30px; transform: rotate(10deg) translateY(0);}
+    .fox-paw.left  { left: 17px;  transform: rotate(-10deg) translateY(0);}
+    .fox-paw.right { right: 17px; transform: rotate(10deg) translateY(0);}
     .fox-paw.cover {
       opacity: 1;
-      transform: translateY(-18px) scale(1.13) rotate(-36deg);
+      transform: translateY(-16px) scale(1.08) rotate(-32deg);
     }
     .fox-paw.cover.right {
-      transform: translateY(-18px) scale(1.13) rotate(36deg);
+      transform: translateY(-16px) scale(1.08) rotate(32deg);
     }
     .fox-paw.peek {
       opacity: 1;
-      transform: translateY(-4px) scale(1.04) rotate(-15deg);
+      transform: translateY(-3px) scale(1.04) rotate(-20deg);
     }
     .fox-paw.peek.right {
       opacity: 1;
-      transform: translateY(-18px) scale(1.13) rotate(36deg);
+      transform: translateY(-16px) scale(1.08) rotate(32deg);
     }
     .fox-claw {
       position: absolute;
@@ -158,18 +160,18 @@
       opacity: 0.7;
     }
     @media (max-width: 400px) {
-      .fox-face-wrapper { width: 110px; height: 160px;}
-      .fox-tail { width: 35px; left: 51%; top: 110px;}
-      .fox-body { width: 62px; top: 60px;}
+      .fox-face-wrapper { width: 106px; height: 170px;}
+      .fox-tail { width: 30px; left: 59%; bottom: 23px;}
+      .fox-body { width: 62px; top: 66px;}
       .fox-head-img { width: 70px; height: 70px; }
       .fox-eyes { width: 70px; height: 70px; }
-      .fox-eye { width: 8.2px; height: 8.2px; top: 33px; }
-      .fox-eye.left { left: 17px; }
-      .fox-eye.right { right: 17px; }
+      .fox-eye { width: 8.5px; height: 8.5px; top: 29px; }
+      .fox-eye.left { left: 18px; }
+      .fox-eye.right { right: 18px; }
       .fox-eye .fox-eye-shine { width: 1.5px; height: 1.5px; left: 2px; top: 2px; }
-      .fox-paw { width: 7.5px; height: 4.4px; top: 16px;}
-      .fox-paw.left { left: 7px;}
-      .fox-paw.right { right: 7px;}
+      .fox-paw { width: 6px; height: 3.8px; top: 34px;}
+      .fox-paw.left { left: 8px;}
+      .fox-paw.right { right: 8px;}
     }
     .login-form {
       display: flex;
@@ -240,11 +242,11 @@
 <body>
   <div class="login-container">
     <div class="fox-face-wrapper" id="foxFace">
-      <span class="fox-body">
-        <img src="fox-body.png" alt="Fox Body">
-      </span>
       <span class="fox-tail">
         <img src="fox-tail.png" alt="Fox Tail" style="width:100%;display:block;">
+      </span>
+      <span class="fox-body">
+        <img src="fox-body.png" alt="Fox Body">
       </span>
       <img src="fox-head.png" alt="Fox Face" class="fox-head-img">
       <!-- Eyes overlay for animation -->
@@ -296,10 +298,10 @@
     });
 
     function moveEyes(len) {
-      // Offset: up to 6px left/right, 2.5px up, based on length
+      // Offset: up to 5px left/right, 2px up, based on length
       const offset = Math.min(len / 18, 1); // 0 to 1
-      const x = 6 * (offset - 0.5); // -3 to 3
-      const y = -2.5 * offset; // 0 to -2.5
+      const x = 5 * (offset - 0.5); // -2.5 to 2.5
+      const y = -2 * offset; // 0 to -2
       eyeL.style.transform = `translate(${x}px, ${y}px)`;
       eyeR.style.transform = `translate(${x}px, ${y}px)`;
     }
