@@ -9,7 +9,9 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      /* fixed: smoother multi-stop gradient and fixed background to avoid banding */
+      background: linear-gradient(135deg, #f6d365 0%, #fdbb7a 35%, #fda085 65%, #ffb199 100%);
+      background-attachment: fixed;
       font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
     }
     body {
@@ -42,9 +44,9 @@
     }
     .fox-tail {
       position: absolute;
-      left: 57%;
-      bottom: 46px;
-      width: 70px; /* BIGGER TAIL */
+      left: 53%;            /* move tail a bit more left so it looks connected */
+      bottom: 56px;         /* lift tail slightly to align with bigger body */
+      width: 90px; /* BIGGER TAIL (increased) */
       z-index: 1;
       transform: rotate(18deg);
       transform-origin: top left;
@@ -63,9 +65,9 @@
     .fox-body {
       position: absolute;
       left: 50%;
-      top: 128px;
+      top: 112px;           /* move body up to better connect with head and tail */
       transform: translateX(-50%);
-      width: 112px;  /* MUCH BIGGER BODY */
+      width: 140px;  /* MUCH BIGGER BODY (increased) */
       z-index: 0;
       pointer-events: none;
       user-select: none;
@@ -83,13 +85,14 @@
       margin: 0 auto;
       pointer-events: none;
       user-select: none;
+      top: -18px;           /* lift the head up a bit so it sits higher on the container */
     }
     /* Eyes overlay, match the size of the head image */
     .fox-eyes {
       position: absolute;
       width: 150px;
       height: 150px;
-      top: 0;
+      top: -18px;           /* match the head lift so eyes align */
       left: 0;
       pointer-events: none;
       z-index: 3;
@@ -161,10 +164,10 @@
     }
     @media (max-width: 400px) {
       .fox-face-wrapper { width: 106px; height: 170px;}
-      .fox-tail { width: 30px; left: 59%; bottom: 23px;}
-      .fox-body { width: 62px; top: 66px;}
-      .fox-head-img { width: 70px; height: 70px; }
-      .fox-eyes { width: 70px; height: 70px; }
+      .fox-tail { width: 36px; left: 59%; bottom: 23px;} /* slightly bigger on small screens */
+      .fox-body { width: 78px; top: 66px;} /* scale up body a bit on small screens */
+      .fox-head-img { width: 70px; height: 70px; top: -8px; }
+      .fox-eyes { width: 70px; height: 70px; top: -8px; }
       .fox-eye { width: 8.5px; height: 8.5px; top: 29px; }
       .fox-eye.left { left: 18px; }
       .fox-eye.right { right: 18px; }
